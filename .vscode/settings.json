@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "InfinityRun_3DGame.sln"
+    "dotnet.defaultSolution": "InfinityRun_3D_SJGC.sln"
 }
