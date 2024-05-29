@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
-    public float jumbForce = 0;
-    bool canJumb = true;
+    public float JumbForce = 1;
+    bool canJumb;
 
     void Awake ()
     {
@@ -22,11 +23,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)  && canJumb)
+        if(Input.GetMouseButtonUp(0)  && canJumb)
         {
             //Jumb - adding force to up direction and Impulse will help for more force with less force
 
-            rb.AddForce(Vector3.up * jumbForce);
+            rb.AddForce(Vector3.up * JumbForce, ForceMode.Impulse);
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -42,5 +43,12 @@ public class Player : MonoBehaviour
         {
             canJumb = false;
         }
+   }
+   private void OnTriggerEnter(Collider other)
+   {
+    if (other.gameObject.tag ==" Obstacle")
+    {
+        SceneManager.LoadScene("BaseDesign");
+    }
    }
 }
